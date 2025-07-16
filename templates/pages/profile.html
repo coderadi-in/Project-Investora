@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{current_user.name}}'s Profile &bull; Project Investora</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+
+<body>
+    {% include 'components/msg.html' %}
+    {% include 'utils/add-trade.html' %}
+    {% include 'utils/add-member.html' %}
+    {% include 'utils/add-team.html' %}
+
+    <section class="app-content">
+        {% include 'components/sidebar.html' %}
+
+        <section class="app-body">
+            {% include 'components/header.html' %}
+
+            <main class="main flex-col gap-50">
+                <div class="basic-info flex-col gap-10">
+                    <h1 class="h1">{{ current_user.name }}</h1>
+                    <h2 class="h2">Total PnL - {{ current_user.pnl }}</h2>
+                </div>
+
+                <div class="account-info flex-col gap-20">
+                    <h1 class="h1">Account Info</h1>
+                    <form action="/profile/update" method="post" class="form flex-col gap-20">
+                        <div class="form-elem flex-col gap-10">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Your name"
+                                value="{{ current_user.name }}" class="input">
+                        </div>
+
+                        <div class="form-elem flex-col gap-10">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Your email"
+                                value="{{ current_user.email }}" class="input">
+                        </div>
+
+                        <div class="form-elem flex-col gap-10">
+                            <label for="trades">Trades</label>
+                            <input disabled type="text" value="{{ current_user.trades }}" class="input">
+                        </div>
+
+                        <div class="form-elem flex-col gap-10">
+                            <label for="pnl">Total PnL</label>
+                            <input disabled type="text" value="{{ current_user.pnl }}" class="input">
+                        </div>
+
+                        <div class="form-elem flex-col gap-10">
+                            <label for="stbal">Starting bal.</label>
+                            {% if current_user.starting_bal == 0.0 %}
+                                <input type="text" name="stbal" id="stbal" value="{{ current_user.starting_bal }}" class="input">
+                            {% else %}
+                                <input disabled type="text" name="stbal" id="stbal" value="{{ current_user.starting_bal }}" class="input">
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn">Update profile</button>
+                    </form>
+                </div>
+            </main>
+        </section>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+
+</html>

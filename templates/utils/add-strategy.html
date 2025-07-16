@@ -1,0 +1,14 @@
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='utils/strategy.css') }}"> -->
+
+<section class="popup-container strategy-container">
+    <div class="popup-content flex-col gap-50">
+        <h1 class="h1">Add strategy</h1>
+        <form action="/add-strategy/" method="post" class="form flex-col gap-50">
+            <div class="flex-col gap-10">
+                <input required type="text" name="title" placeholder="Strategy title" class="input">
+                <textarea name="desc" placeholder="Strategy description" class="input"></textarea>
+            </div>
+            <button type="submit" class="btnxl">Add strategy</button>
+        </form>
+    </div>
+</section>

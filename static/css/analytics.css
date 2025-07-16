@@ -1,0 +1,18 @@
+.main {padding: 20px;}
+
+.main .controls {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--surface);
+}
+
+.main .controls .btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.main .table .row td {
+    padding: 10px 5px;
+    border-radius: 5px;
+    background-color: var(--surface);
+}

@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/sidebar.css')}}">
+<aside class="sidebar flex-col h-sb">
+  <section class="app-controls flex-col gap-10">
+    <div class="title flex v-center gap-10">
+      <img src="{{url_for('static', filename='assets/logo.png')}}" alt="App Icon", width="50" height="50" class="img">
+      <div class="app-name flex-col">
+        <span class="mini">Project</span>
+        <h1 class="h1">Investora</h1>
+      </div>
+    </div>
+
+    <nav class="nav flex-col gap-20">
+      <div class="section flex-col gap-10">
+        <h3 class="h3">Navigation</h3>
+        <a href="/dashboard/" class="link btn">Dashboard</a>
+        <a href="/analytics/" class="link btn">Analytics</a>
+      </div>
+
+      <div class="section flex-col gap-10">
+        <div class="head flex v-center h-sb">
+          <h3 class="h3">Team</h3>
+          <img src="{{url_for('static', filename='assets/add.png')}}" alt="Add" class="img" id="add-team" width="30" height="30">
+        </div>
+        <div class="body flex-col gap-10">
+          {% for team in teams %}
+            <div class="team flex v-center h-sb btn">
+              <a href="/teams/{{ team.id }}" class="link">{{ team.title }} ({{ team.members }})</a>
+              <a href="/delete/team/{{ team.id }}" class="link">
+                <img src="{{ url_for('static', filename='assets/delete.png') }}" alt="Delete team" class="img">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="section flex-col gap-10">
+        <h3 class="h3">Add</h3>
+        <button class="link btn" id="add-member">Member</button>
+        <button class="link btn" id="add-trade">Trade</button>
+      </div>
+    </nav>
+  </section>
+
+  <section class="account-controls flex-col gap-10">
+    <div class="section flex-col gap-10">
+      <h3 class="h3">Account</h3>
+      <a href="/profile/" class="link btn">Profile</a>
+      <a href="/strategies/" class="link btna1">Strategies</a>
+      <a href="/logout/" class="link btna2">Logout</a>
+    </div>
+    <span class="mini watermark">Build by $CODERADI&gt;</span>
+  </section>
+</aside>
+
+<script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>

@@ -1,0 +1,8 @@
+.main {padding: 20px;}
+
+.main .strategy {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+}

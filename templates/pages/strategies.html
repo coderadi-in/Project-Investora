@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Strategies &bull; {{ current_user.name }}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/strategies.css') }}">
+</head>
+<body>
+    {% include 'components/msg.html' %}
+    {% include 'utils/add-trade.html' %}
+    {% include 'utils/add-member.html' %}
+    {% include 'utils/add-team.html' %}
+    {% include 'utils/add-strategy.html' %}
+
+    <section class="app-content">
+        {% include 'components/sidebar.html' %}
+
+        <section class="app-body">
+            {% include 'components/header.html' %}
+
+            <main class="main flex-col gap-20">
+                <div class="head flex v-center h-sb">
+                    <h1 class="h1">All strategies</h1>
+                    <button id="add-strategy" class="btnxl flex v-center gap-10">
+                        <img src="{{ url_for('static', filename='assets/add.png') }}" alt="Add" class="img" width="24" height="24">
+                        <span class="text">Add strategy</span>
+                    </button>
+                </div>
+
+                <div class="strategies flex-col gap-20">
+                    {% for strategy in strategies %}
+                        <div class="strategy flex-col gap-10">
+                            <h2 class="h2">{{ strategy.title }}</h2>
+                            <p class="para">{{ strategy.desc }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
+        </section>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/strategies.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+</html>

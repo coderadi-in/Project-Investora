@@ -1,0 +1,9 @@
+.main {padding: 20px;}
+
+.basic-info {
+    padding: 20px;
+    border: 2px solid var(--text);
+    border-radius: 20px;
+}
+
+.basic-info .h2 {color: var(--primary);}

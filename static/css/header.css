@@ -1,0 +1,18 @@
+.header {
+  padding: 20px;
+  width: 100%
+}
+
+.header .framehead {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: var(--background);
+  border-radius: 10px 0 0 10px;
+  border: 1px solid var(--primary);
+}
+
+.header .framebody {
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+}

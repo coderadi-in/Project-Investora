@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/header.css')}}">
+
+<header class="header flex v-center h-sb">
+  <h3 class="h3">Trader {{current_user.name}}</h3>
+
+  <div class="timeframe flex">
+    <div class="framehead">Timeframe</div>
+    <div class="framebody flex v-center gap-10">
+      <a href="/dashboard/" class="link">All</a>
+      <a href="/dashboard/?timeframe=yearly" class="link">Yearly</a>
+      <a href="/dashboard/?timeframe=monthly" class="link">Monthly</a>
+      <a href="/dashboard/?timeframe=weekly" class="link">Weelkly</a>
+      <a href="/dashboard/?timeframe=daily" class="link">Daily</a>
+    </div>
+  </div>
+</header>

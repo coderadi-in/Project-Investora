@@ -1,0 +1,16 @@
+.form-inputs {
+    display: grid;
+    grid-template-areas: 
+    'date date'
+    'pair side'
+    'entry sl'
+    'takeprofit takeprofit'
+    'lotsize lotsize'
+    'pips rr'
+    'results pnl'
+    'strategy strategy'
+    'session session';
+    gap: 10px;
+}
+
+.form .btnxl:hover {background-color: var(--primary);}

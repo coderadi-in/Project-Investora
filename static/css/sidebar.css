@@ -1,0 +1,24 @@
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  padding: 10px;
+  background-color: var(--surface);
+  border-right: 2px solid var(--border);
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar::-webkit-scrollbar {display: none;}
+
+.sidebar .link {text-align: left;}
+
+.sidebar .title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar .title .img {border-radius: 5px;}
+.sidebar #add-team {cursor: pointer;}
+.sidebar .team .link {color: var(--background);}
+.sidebar .watermark {text-align: center;}

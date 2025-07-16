@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics &bull; Project Investora</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/analytics.css') }}">
+</head>
+
+<body>
+    {% include 'components/msg.html' %}
+    {% include 'utils/add-trade.html' %}
+    {% include 'utils/add-member.html' %}
+    {% include 'utils/add-team.html' %}
+
+    <section class="app-content">
+        {% include 'components/sidebar.html' %}
+
+        <section class="app-body">
+            {% include 'components/header.html' %}
+
+            <main class="main flex-col gap-20">
+                <div class="controls flex-col gap-10">
+                    <h1 class="h1">Analytics</h1>
+
+                    <form action="" class="form flex v-center h-sb">
+                        <div class="inputs flex gap-10">
+                            <select name="session" class="input">
+                                <option value="">All Sessions</option>
+                                {% for session in sessions %}
+                                <option value="{{ session }}">{{ session }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <select name="result" class="input">
+                                <option value="">All Results</option>
+                                <option value="profit">Profits</option>
+                                <option value="loss">Losses</option>
+                                <option value="be">Break evens</option>
+                            </select>
+
+                            <select name="strategy" class="input">
+                                <option value="">All Strategies</option>
+                                {% for strategy in current_user.strategies.split(", ") %}
+                                <option value="{{ strategy }}">{{ strategy }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <select name="timeframe" class="input">
+                                <option value="">All Timeframe</option>
+                                <option value="yearly">Yearly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="daily">Daily</option>
+                            </select>
+                        </div>
+                        <div class="buttons flex gap-10">
+                            <button type="submit" class="link btn flex v-center gap-10">
+                                <img src="{{ url_for('static', filename='assets/filter.png') }}" alt="Filter" class="img">
+                                <span class="text">Filter</span>
+                            </button>
+
+                            <a href="/analytics/" class="link btn flex v-center gap-10">
+                                <img src="{{ url_for('static', filename='assets/refresh.png') }}" alt="Refresh" class="img">
+                                <span class="text">Refresh</span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <table class="table">
+                    <tr class="row">
+                        <td>Date</td>
+                        <td>Pair</td>
+                        <td>Side</td>
+                        <td>Entry</td>
+                        <td>SL</td>
+                        <td>Take profit</td>
+                        <td>Lot</td>
+                        <td>Pips +/-</td>
+                        <td>R:R</td>
+                        <td>Results</td>
+                        <td>Profit/Loss</td>
+                        <td>Strategy</td>
+                        <td>Session</td>
+                    </tr>
+                    {% for trade in trades %}
+                        <tr class="row">
+                            <td>{{ trade.date }}</td>
+                            <td>{{ trade.pair }}</td>
+                            <td>{{ trade.side }}</td>
+                            <td>{{ trade.entry }}</td>
+                            <td>{{ trade.sl }}</td>
+                            <td>{{ trade.take_profit }}</td>
+                            <td>{{ trade.lot_size }}</td>
+                            <td>{{ trade.pips }}</td>
+                            <td>{{ trade.risk_reward }}</td>
+                            <td>{{ trade.result }}</td>
+                            <td>{{ trade.pnl }}</td>
+                            <td>{{ trade.strategy }}</td>
+                            <td>{{ trade.session }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </main>
+        </section>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='utils/trade.css') }}">
+
+<section class="popup-container trade-container">
+    <div class="popup-content flex-col gap-50">
+        <h1 class="h1">Add trade</h1>
+        <form action="/add-trade/" method="post" class="form flex-col gap-50">
+            <div class="form-inputs">
+                <input autofocus required type="date" name="date" class="input" style="grid-area: date;">
+                <input required type="text" name="pair" placeholder="Pair" class="input" style="grid-area: pair;">
+                <input required type="text" name="side" placeholder="Side" class="input" style="grid-area: side;">
+                <input required type="text" name="entry" placeholder="Entry" class="input" style="grid-area: entry;">
+                <input required type="text" name="sl" placeholder="SL" class="input" style="grid-area: sl;">
+                <input required type="text" name="take_profit" placeholder="Take Profit" class="input"
+                    style="grid-area: takeprofit;">
+                <input required type="text" name="lot" placeholder="Lot size" class="input" style="grid-area: lotsize;">
+                <input required type="text" name="pips" placeholder="Pips +/-" class="input" style="grid-area: pips;">
+                <input required type="text" name="risk_reward" placeholder="risk:reward" class="input"
+                    style="grid-area: rr;">
+                <input required type="text" name="result" placeholder="Result" class="input"
+                    style="grid-area: results;">
+                <input required type="text" name="pnl" placeholder="Profit/Loss" class="input" style="grid-area: pnl;">
+
+                <select required name="strategy" class="input" style="grid-area: strategy;">
+                    {% for strategy in current_user.strategies.split(", ") %}
+                        <option value="{{ strategy }}">{{ strategy }}</option>
+                    {% endfor %}
+                </select>
+
+                <input required type="text" name="session" placeholder="Session" class="input"
+                    style="grid-area: session;">
+            </div>
+            <button type="submit" class="btnxl">Add trade</button>
+        </form>
+    </div>
+</section>

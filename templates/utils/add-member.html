@@ -1,0 +1,24 @@
+<style>
+    .mem-container .btnxl:hover {background-color: var(--primary);}
+</style>
+
+<div class="popup-container mem-container">
+    <div class="popup-content flex-col gap-50">
+        <h1 class="h1">Add Member</h1>
+        {% if teams %}
+            <form action="/add-member/" method="post" class="form flex-col gap-50">
+                <div class="flex-col gap-10">
+                    <input autofocus autocomplete="false" required type="email" name="email" placeholder="Email" class="input">
+                    <select required name="team" class="input">
+                        {% for team in teams %}
+                        <option value="{{ team.id }}">{{ team.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btnxl">Add member</button>
+            </form>
+        {% else %}
+            <span class="text">You can't add member as you don't have any team. Create a team first.</span>
+        {% endif %}
+    </div>
+</div>

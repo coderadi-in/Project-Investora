@@ -1,0 +1,17 @@
+body {
+  padding: 20px;
+}
+
+.title {width: 100%;}
+.title .img {border-radius: 5px;}
+
+.bottom {
+  padding: 10px;
+  box-shadow: 0 0 5px var(--border);
+  width: fit-content;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.bottom .input {width: 100%;}
+.bottom .btnxl:hover {background-color: var(--primary);}

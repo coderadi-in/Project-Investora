@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Signup &bull; Project Investora</title>
+
+  <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/auth.css')}}">
+</head>
+<body class="flex-col gap-50 v-center">
+  {% include 'components/msg.html' %}
+  
+  <div class="title flex v-center gap-10">
+    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="App Icon", width="50" height="50" class="img">
+    <div class="app-name flex-col">
+      <span class="mini">Project</span>
+      <h1 class="h1">Investora</h1>
+    </div>
+  </div>
+
+  <div class="bottom flex-col gap-50">
+    <div class="title flex-col">
+      <h1 class="h1">Sign up</h1>
+      <span class="mini">Project Investora</span>
+    </div>
+
+    <form action="/signup" method="post" class="form flex-col gap-10">
+      <input required type="text" name="name" placeholder="Your name" class="input">
+      <input required type="email" name="email" placeholder="Your email" class="input">
+      <input required type="password" name="password" placeholder="Create a password" class="input">
+      <button type="submit" class="btnxl">Signup</button>
+    </form>
+
+    <a href="/login" class="link">Already have an account? Login here</a>
+  </div>
+</body>
+</html>

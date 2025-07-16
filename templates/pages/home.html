@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home &bull; Project Investora</title>
+
+  <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+</head>
+
+<body>
+  {% include 'components/msg.html' %}
+  {% include 'utils/add-trade.html' %}
+  {% include 'utils/add-member.html' %}
+  {% include 'utils/add-team.html' %}
+  
+  <section class="app-content">
+    {% include 'components/sidebar.html' %}
+
+    <section class="app-body">
+      {% include 'components/header.html' %}
+
+      <main class="main">
+        <section class="top flex v-center h-sb">
+          <table class="performance flex-col gap-10">
+            <tr>
+              <td class="key">Total trades</td>
+              <td class="value">{{current_user.trades}}</td>
+            </tr>
+
+            <tr>
+              <td class="key">Winning trades</td>
+              <td class="value">{{current_user.wins}}</td>
+            </tr>
+
+            <tr>
+              <td class="key">Losing trades</td>
+              <td class="value">{{current_user.losses}}</td>
+            </tr>
+
+            <tr>
+              <td class="key">BE trades</td>
+              <td class="value">{{current_user.be}}</td>
+            </tr>
+
+            <tr>
+              <td class="key">Win rate</td>
+              <td class="value">{{current_user.win_rate}}%</td>
+            </tr>
+
+            <tr>
+              <td class="key">risk:reward</td>
+              <td class="value">{{current_user.risk_reward}}</td>
+            </tr>
+
+            <tr>
+              <td class="key">PnL</td>
+              <td class="value">$ {{current_user.pnl}}</td>
+            </tr>
+          </table>
+
+          <div class="pie-chart flex v-center gap-20">            
+              <canvas id="pie-chart"></canvas>
+          </div>
+        </section>
+
+        <section class="bottom">
+          <canvas id="line-chart"></canvas>
+        </section>
+      </main>
+    </section>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+
+</html>

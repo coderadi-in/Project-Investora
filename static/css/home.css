@@ -1,0 +1,16 @@
+.main {padding: 20px;}
+
+.performance .key {
+  background-color: var(--tertiary);
+  border: 1px solid var(--secondary);
+  border-right: 0;
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+.performance .value {
+  background-color: var(--secondary);
+  padding: 10px;
+  border-radius: 0 10px 10px 0;
+  text-align: left;
+}
