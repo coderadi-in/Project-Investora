@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>{{ team.title }} &bull; Project Investora</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
 </head>
+
 <body>
     {% include 'components/msg.html' %}
     {% include 'utils/add-trade.html' %}
@@ -21,10 +23,79 @@
         <section class="app-body">
             {% include 'components/header.html' %}
 
-            <main class="main">
+            <main class="main flex-col gap-20">
+                <div class="head flex v-center gap-10">
+                    <h1 class="h1" id="team-title">{{ team.title }}</h1>
+                    <h2 class="h2" id="team-id">{{ team.id }}</h2>
+                </div>
+
+                <section class="team data flex h-sb">
+                    <table class="performance flex-col gap-10">
+                        <tr>
+                            <td class="key">Total trades</td>
+                            <td class="value">{{ team.trades }}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">Winning trades</td>
+                            <td class="value">{{team.wins}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">Losing trades</td>
+                            <td class="value">{{team.losses}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">BE trades</td>
+                            <td class="value">{{team.be}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">Win rate</td>
+                            <td class="value">{{team.win_rate}}%</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">risk:reward</td>
+                            <td class="value">{{team.risk_reward}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">PnL</td>
+                            <td class="value">$ {{team.pnl}}</td>
+                        </tr>
+                    </table>
+
+                    <div class="member-list flex-col gap-10">
+                        {% for member in members %}
+                        {% if member %}
+                        <div class="member link btn flex v-center gap-10">
+                            <span class="text">{{ member.name }}</span>
+                            <a href="/{{ team.id }}/delete/{{ member.id }}" class="link">
+                                <img src="{{ url_for('static', filename='assets/delete.png') }}" alt="Delete"
+                                    class="img">
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="pie-chart flex v-center gap-20">
+                        <canvas id="pie-chart"></canvas>
+                    </div>
+                </section>
                 
+                <section class="bottom">
+                    <canvas id="line-chart"></canvas>
+                </section>
             </main>
         </section>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/team.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
 </body>
+
 </html>

@@ -63,6 +63,7 @@ class Trade(db.Model):
     pnl = db.Column(db.Float, nullable=False)
     strategy = db.Column(db.String, nullable=False, default="Model 1")
     session = db.Column(db.String, nullable=False)
+    team = db.Column(db.Integer, default=0)
 
 # | Strategy database model
 class Strategy(db.Model):
@@ -109,13 +110,13 @@ def get_risk_reward() -> str:
         return '0:0'
     
 # * Function to update trades count
-def update_trade_count(result: str) -> None:
+def update_trade_count(result: str, model) -> None:
     if result not in ['profit', 'loss', 'be']: return
     
-    current_user.trades += 1
-    if result == 'profit': current_user.wins += 1
-    if result == 'loss': current_user.losses += 1
-    if result == 'be': current_user.be += 1
+    model.trades += 1
+    if result == 'profit': model.wins += 1
+    if result == 'loss': model.losses += 1
+    if result == 'be': model.be += 1
 
 # * Function to update the pnl history list
 def update_to_cumulative(data: list) -> list:

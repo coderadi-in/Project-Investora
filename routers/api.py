@@ -109,3 +109,28 @@ def history():
     return jsonify({
         'pnl': pnl
     })
+
+# & Team trades route
+@api.route('/team/<int:team_id>/trades/')
+def team_trades(team_id):
+    team = Team.query.filter_by(id=team_id).first()
+    trades = Trade.query.filter_by(team=team.id).all()
+
+    winning: list = [trade for trade in trades if trade.result == 'profit']
+    losing: list = [trade for trade in trades if trade.result == 'loss']
+    breakevens: list = [trade for trade in trades if trade.result == 'be']
+
+    return jsonify({
+        'winning': len(winning),
+        'losing': len(losing),
+        'be': len(breakevens)
+    })
+
+@api.route('/team/<int:team_id>/history/')
+def team_history(team_id):
+    team = Team.query.filter_by(id=team_id).first()
+    trades = Trade.query.filter_by(team=team.id).all()
+
+    pnl: list = [trade.pnl for trade in trades]
+
+    return jsonify({'pnl': pnl})

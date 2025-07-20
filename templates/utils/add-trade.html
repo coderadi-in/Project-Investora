@@ -3,7 +3,7 @@
 <section class="popup-container trade-container">
     <div class="popup-content flex-col gap-50">
         <h1 class="h1">Add trade</h1>
-        <form action="/add-trade/" method="post" class="form flex-col gap-50">
+        <form action="/add/trade/" method="post" class="form flex-col gap-50">
             <div class="form-inputs">
                 <input autofocus required type="date" name="date" class="input" style="grid-area: date;">
                 <input required type="text" name="pair" placeholder="Pair" class="input" style="grid-area: pair;">
@@ -28,6 +28,13 @@
 
                 <input required type="text" name="session" placeholder="Session" class="input"
                     style="grid-area: session;">
+                
+                <select name="team" class="input" style="grid-area: team;">
+                    <option value="">No team</option>
+                    {% for team in allteams %}
+                        <option value="{{ team.id }}">{{ team.title }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <button type="submit" class="btnxl">Add trade</button>
         </form>
