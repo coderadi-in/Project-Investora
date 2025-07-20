@@ -7,7 +7,7 @@ A modern trading tracking & portfolio management tool designed for forex traders
 
 ---
 
-## Features (v0.9.0)
+## Features (v0.9.3)
 - ✅ **Portfolio Tracking** – Monitor trades, strategies.
 - ✅ **Chart Dashboard** – Visualize performance trends.
 - ✅ **Team Section** – You can see charts in teams section just like profile.
