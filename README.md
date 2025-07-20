@@ -28,5 +28,4 @@ A modern trading tracking & portfolio management tool designed for forex traders
 ![Add Trade page](docs/add.png)
 
 ---
-
 `PyCODE` &bull; 2025 &bull; coderadi
