@@ -1,5 +1,7 @@
-# [Project Investora](https://project-investora.onrender.com) &bull; coderadi
+Project Investora &bull; coderadi
 **Version: 0.9.0 (Beta)** | **Status: Under Development**
+
+[![Open app](docs/open-btn.png)](https://project-investora.onrender.com)
 
 A modern trading tracking & portfolio management tool designed for forex traders.
 
@@ -7,25 +9,32 @@ A modern trading tracking & portfolio management tool designed for forex traders
 
 ---
 
+A modern trading tracking & portfolio management tool designed for forex traders.
+
+![Dashboard Screenshot](../docs/dash.png)
+
+---
+
 ## Features (v0.9.3)
 - ✅ **Portfolio Tracking** – Monitor trades, strategies.
 - ✅ **Chart Dashboard** – Visualize performance trends.
-- ✅ **Team Section** – You can see charts in teams section just like profile.
-- ✅ **Strategies Section** – Yow you can add custom strategies that you've back tested.
+- ✅ **Team Section** - You can see charts in teams section just like profile.
+- ✅ **Strategies Section** – You can add custom strategies that you've back tested.
 
 **More features coming in v1.0!* *
 
-![Analytics Page](docs/analytics.png)
+## What's fixed
+You may have encountered that the charts are not being rendered, it's was a small bug, that we've fixed.
+
+## What's next
+Next we're launching v.1.0.0 .
+
+![Analytics Page](../docs/analytics.png)
 
 --- 
 
-## Tech Stack
-- **Frontend**: HTML/CSS/JS
-- **Backend**: Flask
-- **Database**: SQLite
-- **APIs**: Flask REST-API
-
-![Add Trade page](docs/add.png)
+![Add Trade page](../docs/updated-team.png)
 
 ---
-`PyCODE` &bull; 2025 &bull; coderadi
+
+`PyCOD3` &bull; 2025 &bull; coderadi
