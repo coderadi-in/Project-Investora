@@ -33,7 +33,7 @@ Next we're launching v.1.0.0 .
 
 --- 
 
-![Add Trade page](../docs/updated-team.png)
+![Add Trade page](docs/updated-team.png)
 
 ---
 
