@@ -1,4 +1,4 @@
-const BASEURL = 'http://127.0.0.1:5000/api'
+const BASEURL = 'https://project-investora.onrender.com/api'
 const urlParams = new URLSearchParams(window.location.search);
 const timeframe = urlParams.get('timeframe');
 
