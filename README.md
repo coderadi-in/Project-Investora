@@ -1,5 +1,5 @@
 Project Investora &bull; coderadi
-**Version: 0.9.0 (Beta)** | **Status: Under Development**
+**Version: 0.9.4 (Beta)** | **Status: Under Development**
 
 [![Open app](docs/open-btn.png)](https://project-investora.onrender.com)
 
