@@ -11,7 +11,7 @@ A modern trading tracking & portfolio management tool designed for forex traders
 
 A modern trading tracking & portfolio management tool designed for forex traders.
 
-![Dashboard Screenshot](../docs/dash.png)
+![Dashboard Screenshot](docs/dash.png)
 
 ---
 
@@ -29,7 +29,7 @@ You may have encountered that the charts are not being rendered, it's was a smal
 ## What's next
 Next we're launching v.1.0.0 .
 
-![Analytics Page](../docs/analytics.png)
+![Analytics Page](docs/analytics.png)
 
 --- 
 
