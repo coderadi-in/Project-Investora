@@ -1,4 +1,4 @@
-const BASEURL = 'http://127.0.0.1:5000/api/team'
+const BASEURL = 'https://project-investora.onrender.com/api/team'
 const teamId = document.querySelector("#team-id").innerHTML;
 
 // * Function to render doughnut chart
