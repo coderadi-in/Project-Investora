@@ -1,6 +1,8 @@
 # Project Investora &bull; coderadi
 **Version: 1.0.0 (Stable)** | **Status: Developed**
 
+[![Open app](/docs/open-btn.png)](https://project-investora.onrender.com)
+
 A modern trading tracking & portfolio management tool designed for forex traders.
 
 ![Dashboard Screenshot](/docs/dash.png)
