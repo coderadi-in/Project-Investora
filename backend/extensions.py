@@ -4,6 +4,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from flask_migrate import Migrate
+from authlib.integrations.flask_client import OAuth
 
 # ? Importing llibraries
 from sqlalchemy import extract, and_
@@ -13,13 +14,34 @@ from datetime import datetime, timedelta
 db = SQLAlchemy()
 migrate = Migrate()
 logger = LoginManager()
+oauth = OAuth()
+
+# & Configure Google OAuth
+def init_oauth(app):
+    google = oauth.register(
+        name='google',
+        client_id=app.config['GOOGLE_CLIENT_ID'],
+        client_secret=app.config['GOOGLE_CLIENT_SECRET'],
+        access_token_url='https://oauth2.googleapis.com/token',
+        authorize_url='https://accounts.google.com/o/oauth2/v2/auth',
+        api_base_url='https://www.googleapis.com/oauth2/v3/',
+        client_kwargs={
+            'scope': 'openid email profile',
+            'prompt': 'select_account',
+        },
+        jwks_uri='https://www.googleapis.com/oauth2/v3/certs',
+        server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    )
+
+    return google
 
 # | User database model
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    google_id = db.Column(db.String(100), unique=True)
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False, unique=True)
-    password = db.Column(db.String, nullable=False)
+    password = db.Column(db.String)
     trades = db.Column(db.Integer, default=0)
     wins = db.Column(db.Integer, default=0)
     losses = db.Column(db.Integer, default=0)

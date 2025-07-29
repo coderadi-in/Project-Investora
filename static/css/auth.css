@@ -13,5 +13,13 @@ body {
   text-align: center;
 }
 
+#google-login {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--text);
+}
+
+#google-login:hover {background-color: var(--tertiary);}
+
 .bottom .input {width: 100%;}
 .bottom .btnxl:hover {background-color: var(--primary);}

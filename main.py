@@ -17,6 +17,8 @@ server.config.from_object(Config)
 db.init_app(server)
 migrate.init_app(server, db)
 logger.init_app(server)
+oauth.init_app(server)
+init_oauth(server)
 
 # ! Binding routers
 server.register_blueprint(router)

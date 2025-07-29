@@ -65,6 +65,56 @@ def login():
     flash("You're logged in successfully!", "success")
     return redirect(url_for('router.dash'))
 
+# & Google login route
+@auth.route('/login/google')
+def google_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('router.dash'))
+    redirect_uri = url_for('auth.google_authorize', _external=True)
+    return oauth.google.authorize_redirect(redirect_uri)
+
+# & Google login callback route
+@auth.route('/login/google/callback')
+def google_authorize():
+    try:
+        # Get the token
+        token = oauth.google.authorize_access_token()
+        
+        # Get user info directly from the token response
+        user_info = token.get('userinfo')
+        if not user_info:
+            # Fallback to API request if not in token
+            user_info = oauth.google.get('userinfo').json()
+        
+        # Ensure we have required fields
+        if not user_info.get('email'):
+            flash('Google login failed: No email provided', 'error')
+            return redirect(url_for('auth.login'))
+        
+        # Find or create user
+        user = User.query.filter_by(email=user_info['email']).first()
+        if not user:
+            user = User(
+                google_id=user_info.get('sub'),
+                name=user_info.get('name', ''),
+                email=user_info['email'],
+            )
+            db.session.add(user)
+        else:
+            # Update existing user if needed
+            if not user.google_id:
+                user.google_id = user_info.get('sub')
+        
+        db.session.commit()
+        login_user(user)
+        flash('Logged in successfully with Google.', 'success')
+        return redirect(url_for('router.index'))
+        
+    except Exception as e:
+        flash('Failed to log in with Google. Please try again.', 'error')
+        print(f"Google OAuth error: {str(e)}")
+        return redirect(url_for('auth.login'))
+
 # & Logout Route
 @auth.route('/logout/')
 @login_required

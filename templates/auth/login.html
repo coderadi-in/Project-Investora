@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +11,12 @@
   <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/auth.css')}}">
 </head>
+
 <body class="flex-col gap-50 v-center">
   {% include 'components/msg.html' %}
-  
+
   <div class="title flex v-center gap-10">
-    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="App Icon", width="50" height="50" class="img">
+    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="App Icon" , width="50" height="50" class="img">
     <div class="app-name flex-col">
       <span class="mini">Project</span>
       <h1 class="h1">Investora</h1>
@@ -27,13 +29,21 @@
       <span class="mini">Project Investora</span>
     </div>
 
-    <form action="/auth/login/" method="post" class="form flex-col gap-10">
-      <input required type="email" name="email" placeholder="Your email" class="input">
-      <input required type="password" name="password" placeholder="Create a password" class="input">
-      <button type="submit" class="btnxl">Login</button>
-    </form>
+    <div class="auth-content flex-col gap-20">
+      <form action="/auth/login/" method="post" class="form flex-col gap-10">
+        <input required type="email" name="email" placeholder="Your email" class="input">
+        <input required type="password" name="password" placeholder="Create a password" class="input">
+        <button type="submit" class="btnxl">Login</button>
+      </form>
+
+      <a href="/auth/login/google" class="link btnxl flex v-center gap-10" id="google-login">
+        <img src="{{ url_for('static', filename='assets/google.png') }}" alt="Google" class="img">
+        <span class="text">Login with google</span>
+      </a>
+    </div>
 
     <a href="/auth/signup/" class="link">Don't have an account? Signup here</a>
   </div>
 </body>
+
 </html>
